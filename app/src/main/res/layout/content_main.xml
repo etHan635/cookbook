@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.view.View"/>
+        <import type="com.example.cookbook.data.Recipe"/>
+        <variable
+            name="recipe"
+            type="Recipe" />
+    </data>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/Theme.Cookbook.AppBarOverlay">
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll|enterAlways|snap">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <androidx.appcompat.widget.Toolbar
+                        android:id="@+id/toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:title="@{(recipe != null)? recipe.title : `Cookbook`}"
+                        app:subtitle="@{(recipe != null)? recipe.subtitle : ``}"
+                        app:menu="@menu/menu_recipe"
+                        app:popupTheme="@style/Theme.Cookbook.PopupOverlay"/>
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/tablayout_recipe"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="@{(recipe != null)? View.VISIBLE : View.GONE}"
+                        app:tabMaxWidth="0dp"
+                        app:tabGravity="fill"
+                        app:tabMode="fixed"/>
+                </LinearLayout>
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swiperefresh_recipe"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{(recipe != null)? View.VISIBLE : View.GONE}"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewpager_recipe"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="128dp"
+            android:visibility="@{(recipe == null)? View.VISIBLE : View.GONE}">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_error"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="No recipe selected."/>
+        </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            android:visibility="@{(recipe != null)? View.VISIBLE : View.GONE}"
+            app:srcCompat="@drawable/ic_edit"/>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

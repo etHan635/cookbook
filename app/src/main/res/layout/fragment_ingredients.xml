@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="empty"
+            type="boolean" />
+    </data>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".StepsFragment">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_ingredients"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="@{!empty? View.VISIBLE : View.GONE}"
+            tools:listitem="@layout/recyclerview_steps_item" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="128dp"
+            android:visibility="@{empty? View.VISIBLE : View.GONE}">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_error"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="No ingredients found."/>
+        </LinearLayout>
+    </FrameLayout>
+</layout>

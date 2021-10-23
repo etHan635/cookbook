@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.view.View"/>
+        <import type="com.example.cookbook.data.Recipe"/>
+        <variable
+            name="recipe"
+            type="Recipe" />
+    </data>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/Theme.Cookbook.AppBarOverlay">
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <androidx.appcompat.widget.Toolbar
+                        android:id="@+id/toolbar_recipe_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:menu="@menu/menu_recipe_edit"
+                        app:popupTheme="@style/Theme.Cookbook.PopupOverlay">
+                        <EditText
+                            android:id="@+id/edittext_recipe_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:maxLines="1"
+                            android:inputType="textShortMessage"
+                            android:text="@={recipe.title}"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                            android:hint="Enter Recipe Title..."
+                            android:visibility="@{ (recipe != null)? View.VISIBLE : View.GONE }"/>
+                    </androidx.appcompat.widget.Toolbar>
+                    <EditText
+                        android:id="@+id/edittext_recipe_subtitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:maxLines="1"
+                        android:inputType="textShortMessage"
+                        android:text="@={recipe.subtitle}"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle"
+                        android:hint="Put important info here..."
+                        android:visibility="@{ (recipe != null)? View.VISIBLE : View.GONE }"/>
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/tablayout_edit_recipe"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:tabMaxWidth="0dp"
+                        app:tabGravity="fill"
+                        app:tabMode="fixed"/>
+                </LinearLayout>
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swiperefresh_edit_recipe"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewpager_edit_recipe"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_edit_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            android:visibility="@{(recipe != null)? View.VISIBLE : View.GONE}"
+            app:srcCompat="@drawable/ic_check"/>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

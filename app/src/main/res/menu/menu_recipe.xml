@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group android:id="@+id/group_recipe">
+        <item android:id="@+id/action_recipe_bookmark"
+            android:title="Bookmark"
+            android:icon="@drawable/ic_bookmark_border"
+            app:showAsAction="ifRoom"/>
+        <item android:id="@+id/action_recipe_bookmark_remove"
+            android:title="Remove Bookmark"
+            android:icon="@drawable/ic_bookmark"
+            app:showAsAction="ifRoom"
+            android:visible="false"/>
+        <item android:id="@+id/action_recipe_duplicate"
+            android:title="Duplicate Recipe"
+            app:showAsAction="never"/>
+    </group>
+</menu>
