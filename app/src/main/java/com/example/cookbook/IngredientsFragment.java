@@ -48,7 +48,7 @@ public class IngredientsFragment extends Fragment {
                     mAdapter.setIngredients(ingredients);
                     mBinding.setEmpty(mIngredientsViewModel.isIngredientsEmpty());
                 } else {
-                    //TODO no ingredients found
+                    //no ingredients found
                     mAdapter.setIngredients(null);
                     mBinding.setEmpty(true);
                 }
@@ -62,7 +62,7 @@ public class IngredientsFragment extends Fragment {
                 if(recipe != null){
                     mIngredientsViewModel.setRecipe(recipe.getRecipeId());
                 } else {
-                    //TODO no recipe in parent
+                    //no recipe in parent
                     mAdapter.setIngredients(null);
                 }
             }

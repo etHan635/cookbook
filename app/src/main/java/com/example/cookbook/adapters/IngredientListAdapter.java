@@ -16,7 +16,7 @@ import com.example.cookbook.databinding.RecyclerviewStepsItemBinding;
 
 import java.util.ArrayList;
 import java.util.List;
-//https://www.tutorialspoint.com/how-to-filter-a-recyclerview-with-a-searchview-on-android
+
 public class IngredientListAdapter extends RecyclerView.Adapter {
     private final LayoutInflater mInflater;
 

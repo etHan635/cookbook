@@ -41,17 +41,17 @@ public class EditIngredientsViewModel extends IngredientsViewModel {
         if(ingredients != null){
             for(Ingredient ingredient : mCachedIngredients){
                 if(ingredients.contains(ingredient)){
-                    //update
+                    //Present
                     mRepository.update(ingredient);
                 } else {
-                    //Delete
+                    //Missing
                     mRepository.delete(ingredient);
                 }
             }
 
             for(Ingredient ingredient : ingredients){
                 if(!mCachedIngredients.contains(ingredient)){
-                    //Insert
+                    //New
                     mRepository.insert(ingredient);
                 }
             }

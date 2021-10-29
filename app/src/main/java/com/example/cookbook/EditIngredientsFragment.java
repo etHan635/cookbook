@@ -51,7 +51,7 @@ public class EditIngredientsFragment extends Fragment implements RecipeUpdateApp
                     mAdapter.setIngredients(ingredients);
                     mBinding.setEmpty(mIngredientsViewModel.isIngredientsEmpty());
                 } else {
-                    //TODO no ingredients found
+                    //no ingredients found
                     mAdapter.setIngredients(null);
                     mBinding.setEmpty(false);//Hide button if null
                 }
@@ -66,7 +66,7 @@ public class EditIngredientsFragment extends Fragment implements RecipeUpdateApp
                 if(recipe != null){
                     mIngredientsViewModel.setRecipe(recipe.getRecipeId());
                 } else {
-                    //TODO no recipe in parent
+                    //No recipe in parent
                     mAdapter.setIngredients(null);
                 }
             }

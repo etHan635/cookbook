@@ -73,20 +73,17 @@ public class EditStepsViewModel extends StepsViewModel {
         if(steps != null){
             for(Step step : mCachedSteps){
                 if(steps.contains(step)){
-                    //Update
-                    Log.d("Present", Integer.toString(step.getStepId()));
+                    //Present
                     mRepository.update(step);
                 } else {
-                    //Delete
+                    //Missing
                     mRepository.delete(step);
-                    Log.d("Missing", Integer.toString(step.getStepId()));
                 }
             }
 
             for(Step step: steps){
                 if(!mCachedSteps.contains(step)){
-                    //Insert
-                    Log.d("New", Integer.toString(step.getStepId()));
+                    //New
                     mRepository.insert(step);
                 }
             }

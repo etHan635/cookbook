@@ -39,7 +39,6 @@ public class EditRecipeViewModel extends RecipeViewModel {
     public void updateRecipe(){
         Recipe recipe = mRecipe.getValue();
         if(recipe != null){
-            //recipe.setTitle(title);
             mRepository.update(recipe);
         }
     }

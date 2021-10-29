@@ -50,7 +50,7 @@ public class StepsFragment extends Fragment {
                     mAdapter.setSteps(steps);
                     mBinding.setEmpty(mStepsViewModel.isStepsEmpty());
                 } else {
-                    //TODO no steps found
+                    //no steps found
                     mAdapter.setSteps(null);
                     mBinding.setEmpty(false);
                 }
@@ -65,7 +65,7 @@ public class StepsFragment extends Fragment {
                 if(recipe != null){
                     mStepsViewModel.setRecipe(recipe.getRecipeId());
                 } else {
-                    //TODO no recipe in parent
+                    //no recipe in parent
                     mAdapter.setSteps(null);
                 }
             }

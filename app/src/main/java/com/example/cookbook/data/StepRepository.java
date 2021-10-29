@@ -23,8 +23,6 @@ public class StepRepository {
 
     public void delete(Step step){ new deleteAsyncTask(mDao).execute(step); }
 
-    //public LiveData<Step> get(int stepId){ return mDao.get(stepId); }
-
     public void getFor(int recipe, StepsRetrievedListener callback){
         new selectAsyncTask(mDao, callback).execute(recipe);
     }
